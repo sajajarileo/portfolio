@@ -1,0 +1,321 @@
+@charset "utf-8";
+/******** 메모 ********/
+/*
+<모달 ma:w 설정할거면>
+- ::after든 div.modal-background든 100p 나가는 요소 깔아주고 색상 #f or #0a5
+> 미디어 쿼리에 작성해도 무관
+> pos 위치를 중앙으로(pc는 슬라이드 아니고 fade여서 상관없음)
+
+<project 클래스 명 정돈>
+
+*/
+
+/******** 리셋 ********/
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  list-style: none;
+  text-decoration: none;
+  color: #000;
+}
+a[href=''] {pointer-events: none;}
+
+/******** 폰트 ********/
+h1 {font-size: 2em; line-height: 1;}
+h2 {font-size: 1.5em; line-height: 1.2;}
+h3 {font-size: 1.17em; line-height: 1.2;}
+h4 {font-size: 1em; line-height: 1.2;}
+h5 {font-size: 0.83em; line-height: 1.2;}
+h6 {font-size: 0.67em; line-height: 1.2;}
+p, a, li {line-height: 1.5;}
+address, small {font-size: smaller; line-height: 2;}
+address {font-style: normal;}
+* {font-family: 'inter', 'Noto Sans KR'}
+
+/******** 변수 ********/
+:root {
+  --marginHorizontal: 1em;
+  --marginVertical: 1em;
+}
+
+/******** 페이지 전체 설정 ********/
+#wrap {width: 100%;}
+
+:root {--navHeight: 4em;}
+#cover {
+  width: 100%;
+  height: var(--navHeight);
+  background-color: #ccc;
+  padding: 0 var(--marginHorizontal);
+  box-sizing: border-box;
+  margin-bottom: calc(var(--marginVertical) * 4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+section:not(#cover) {
+  padding: 0 var(--marginHorizontal);
+  box-sizing: border-box;
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  margin-bottom: calc(var(--marginVertical) * 4);
+}
+
+/******** 프로젝트 ********/
+.project-category {
+  text-align: center;
+  margin-bottom: calc(var(--marginVertical) * 2);
+}
+
+:root {--projectGap: 1em}
+.project-grid {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--projectGap) * 2) var(--projectGap);
+}
+@media (min-width: 512px) {
+  :root {--marginHorizontal: 1.5em;}
+  .project-grid {grid-template-columns: 1fr 1fr 1fr;}
+}
+@media (min-width: 1024px) {
+  :root {--marginHorizontal: 2em;}
+  .project-grid {grid-template-columns: 1fr 1fr 1fr 1fr;}
+  .project-grid.rem3 .project,
+  .project-grid:not(:has(> .project:nth-of-type(4))) .prssoject {margin-left: 50%;}
+  /* not은 safari, firefox 제외 성능 강화 */
+  /* 3일때만 사용. 나머지가 3이면 nth-last-of-type(-n + 3) 활용 */
+}
+
+:root {--projectNameHeight: 3em}
+.project {
+    width: 100%;
+    padding-top: 100%;
+    height: var(--projectNameHeight);
+    position: relative;
+}
+
+.project-thumbnail {
+    width: 100%;
+    padding-top: 100%;
+    background-color: #eee;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    cursor: pointer;
+    /* transition: transform 0.2s; */
+    transition: all 0.2s;
+    border: 1px solid #fff;
+}
+.project:hover .project-thumbnail {
+  transform: scale(1.05);
+  border: 1px solid #0005;
+}
+
+.project-name {
+    margin-top: 100%;
+    width: 100%;
+    height: var(--projectNameHeight);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+/******** 프로젝트 - 이미지 관리 ********/
+#being-sand .project-thumbnail {background-image: url(../img/proj_being-sand.jpg);}
+#binggrae .project-thumbnail {background-image: url(../img/proj_binggrae.jpg);}
+#jo-malone .project-thumbnail {background-image: url(../img/proj_jo-malone.jpg);}
+#seoul-milk .project-thumbnail {background-image: url(../img/proj_seoul-milk.jpg);}
+#trekstar .project-thumbnail {background-image: url(../img/proj_trekstar.jpg);}
+#starbucks .project-thumbnail {background-image: url(../img/proj_starbucks.jpg);}
+#lg-group .project-thumbnail {background-image: url(../img/proj_lg-group.jpg);}
+#aiai .project-thumbnail {background-image: url(../img/proj_aiai.jpg);}
+#almondlight .project-thumbnail {background-image: url(../img/proj_almondlight.jpg);}
+#nmk .project-thumbnail {background-image: url(../img/proj_nmk.jpg);}
+#welcome-to-korea .project-thumbnail {background-image: url(../img/proj_welcome-to-korea.jpg);}
+#bacchus .project-thumbnail {background-image: url(../img/proj_bacchus.jpg);}
+#god-road .project-thumbnail {background-image: url(../img/proj_god-road.jpg);}
+#construction-w-ai .project-thumbnail {background-image: url(../img/proj_construction-w-ai.jpg);}
+
+
+
+/******** 모달창 ********/
+.modal-open {
+    position: fixed;
+    top: 0;
+}
+.modal-open #modal {
+    left: 0;
+    opacity: 1;
+}
+#modal {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    max-width: none;
+    position: fixed;
+    left: -100%;
+    /* left: 50%;
+    transform: translateX(-150%); */
+    /* left transition 부자연스러움
+    이렇게 하면 max width 포기 */
+    top: 0;
+    opacity: 0;
+    z-index: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+/*    transition: left 0.5s ease;*/
+/*    transition: left 0s 0s, opacity 0.5s ease;*/
+
+
+/* left: 0; */
+    /* opacity: 1; */
+    /* 삭제 예정 */
+}
+
+.modal-title {
+    width: 100%;
+    margin: 2em 0 1em;
+    height: var(--navHeight);
+    display: flex;
+    justify-content: space-between;
+}
+.modal-close {
+    width: 4em;
+    height: 4em;
+    position: relative;
+    cursor: pointer;
+}
+.modal-close::after, .modal-close::before {
+    content: '';
+    width: 72%;
+    height: 4%;
+    background-color: #000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%) rotate(45deg);
+}
+.modal-close::before {transform: translate(-50%) rotate(-45deg);}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-bottom: 3em;
+}
+
+#modal .content-img {
+    width: 100%;  
+    /* padding-top: 100%; */
+    /* background-image: url(); */
+    /* 스크립트 제어 */
+    background-size: contain;
+    background-position: center 0;
+}
+:root {--modalTextwrapGap: 2em}
+#modal .content-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--modalTextwrapGap);
+}
+@media (min-width: 1024px) {
+    .modal-content {
+        display: flex;
+        flex-direction: row;
+    }
+    #modal .content-img {width: 60%;}
+    #modal .content-text {
+        width: 40%;
+        padding: 1em;
+        box-sizing: border-box;
+        gap: calc(var(--modalTextwrapGap) * 2);
+    }
+}
+#modal .content-img * {width: 100%;}
+
+#modal .text-link {
+    display: flex;
+    align-items: center;
+}
+#modal .text-link a {
+    flex: 1;
+    text-align: center;
+    color: blue;
+    word-break: keep-all;
+    white-space: normal;
+    position: relative;
+}
+#modal .text-link :not(:first-child)::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 1em;
+    background-color: #000;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#modal [class^='text-info-'] h4 {margin-bottom: 0.5em;}
+#modal [class^='text-info-'] p {word-wrap: break-word}
+
+/*
+#modal .text-info-tool .icon {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+*/
+#modal .text-info-tool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1em;
+}
+#modal .text-info-tool h4 {width: 100%;}
+#modal [class^='icon-'] {width: 4em; height: 4em; border-radius: 5%; background-size: contain; background-position: center 0;}
+
+.icon-photoshop {background-image: url(../img/icon_tool-photoshop.svg);}
+.icon-illust {background-image: url(../img/icon_tool-illust.svg);}
+.icon-indesign {background-image: url(../img/icon_tool-indesign.svg);}
+.icon-premiere {background-image: url(../img/icon_tool-premiere.svg);}
+.icon-figma {background-image: url(../img/icon_tool-figma.svg);}
+
+#modal .text-info-contribution {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2em;
+}
+#modal .text-info-contribution h4 {width: 100%;}
+#modal .text-info-contribution .material-symbols-outlined {font-size: 4em!important; color: blue;}
+#modal .text-info-contribution:not(.teamwork) .group {display: none;}
+#modal .text-info-contribution.teamwork .person {display: none;}
+
+#modal .contribution-text > :not(:last-child) {margin-bottom: 0.5em;}
+#modal .contribution-text li li {
+  margin-left: 1.2em;
+  list-style: square;
+}
+
+
+
+
+
+
+
+
+
+
+
+
