@@ -37,7 +37,6 @@
       font-size: 16px;
     }
     h2 {
-      color: hsl(0, 0%, 50%);
       font: 700 2em / 1.25 '';
       font-size: max(2em, 1.75rem);
     }
@@ -90,7 +89,7 @@
       text-align: center;
     }
     /******** 탑 버튼 ********/
-    .btn_top {
+    .btn_top.style {
       position: fixed;
       right: var(--gutterX);
       bottom: var(--gutterY);
@@ -105,7 +104,7 @@
       transition: opacity var(--duration);
       cursor: pointer;
     }
-    .observed .btn_top {
+    .observed .btn_top.style {
       opacity: 1;
       visibility: visible;
     }
@@ -136,6 +135,9 @@
     #about_me {
       max-width: 800px;
       padding: var(--gutterX);
+    }
+    #about_me h2 {
+      color: hsl(0, 0%, 50%);
     }
     #about_me .box {
       margin-top: var(--gutterX);
@@ -324,6 +326,9 @@
         position: static;
         height: 80%;
       }
+      #portfolio .info {
+        color: hsl(0, 0%, 12.5%);
+      }
     }
     
     @media (max-width: 600px) {
@@ -390,7 +395,7 @@
 
     <!-------- 리스트 -------->
     <section id="gallery">
-      <h2 class="title">포트폴리오</h2>
+      <h2 class="title btn_top" style="width: max-content; margin: 0 auto;">포트폴리오</h2>
       <h3>웹 디자인</h3>
       <article>
         <div id="pj_beingsand">
@@ -452,7 +457,7 @@
           <p>Welcome to Korea!</p>
         </div>
       </article>
-      <button class="btn_top">top</button>
+      <button class="btn_top style">top</button>
     </section>
 
     <!-------- 팝업 -------->
