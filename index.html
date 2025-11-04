@@ -619,7 +619,6 @@
       if (!data) return;
 
       // 이미지 변경
-      TAG_PORTFOLIO_IMG.src = '';
       TAG_PORTFOLIO_IMG.src = `${REPO_URL}/img/${eventTarget.id}.jpg`;
 
       // 이미지 박스 배경
@@ -686,10 +685,9 @@
 
     // 사전 이미지 로드
     function preloadImg() {
-      let img = new Image();
       TAGS_GALLERY_DIV.forEach(e => {
+        let img = new Image();
         img.src = `${REPO_URL}/img/${e.id}.jpg`;
-        console.log(`${REPO_URL}/img/${e.id}.jpg`);
       });
     } preloadImg();
     
