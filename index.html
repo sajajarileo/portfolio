@@ -256,7 +256,6 @@
       flex-grow: 1;
       position: sticky; top: 0;
       padding: max(1em, 12px);
-      background: hsl(0, 0%, 95%);
     }
     #portfolio .imgbox img {
       width: 100%;
@@ -513,6 +512,7 @@
     // 포트폴리오 데이터
     const PORTFOLIO_DATA = {
       'pj_beingsand': {
+        background: 'rgb(222, 211, 205)',
         category: 'UI/UX',
         info: '가상의 브랜드 "빙 샌드"를 제작하고, 모바일 앱 UI/UX 디자인을 설계했습니다.',
         link: ['사이트 보러가기|https://www.figma.com/proto/kmZLUJjjzDmVif1ZeYNylu/being_sand?node-id=2090-2190&t=VB2Xw2D8QlwF4ljc-1', `브랜드 디자인|${REPO_URL}/pdf/plan_beingsand.pdf`],
@@ -521,6 +521,7 @@
         role: ['디자인 100%']
       },
       'pj_binggrae': {
+        background: 'rgb(228, 229, 231)',
         category: '반응형 웹',
         info: '빙그레의 웹 사이트를 레트로 감성이 물씬 드는 반응형 웹으로 리뉴얼 했습니다.',
         link: ['사이트 보러가기|http://sajajarileo.dothome.co.kr', `기획안|${REPO_URL}/pdf/plan_binggrae.pdf`],
@@ -529,6 +530,7 @@
         role: ['팀장 역할 수행', '회사소개 대표 페이지,\n제품 소개 대표 페이지,\nESG 대표 페이지,\n뉴스룸 대표 페이지 디자인', '코딩 100%']
       },
       'pj_jomalone': {
+        background: 'rgb(44, 44, 44)',
         category: '웹',
         info: '조 말론의 웹 사이트를 깔끔하고 세련된 느낌에 초점을 맞추어 리뉴얼 했습니다.',
         link: ['사이트 보러가기|http://gmail000leo8202.dothome.co.kr', `기획안|${REPO_URL}/pdf/plan_jomalone.pdf`],
@@ -537,6 +539,7 @@
         role: ['팀장 역할 수행', '디자인 가이드 작성', '48개 html 구조,\nstyle.css,\najax를 이용한 auto_href.js 작성']
       },
       'pj_daesan': {
+        background: 'rgb(125, 158, 193)',
         category: '반응형 웹',
         info: '대산종합설비 웹사이트 제작입니다. 인덱스 페이지 서브 디자인, 회사소개 페이지 디자인, html과 css 작성을 맡았습니다.',
         link: ['사이트 보러가기|https://www.xn--ds-c82j38g33mzot.com'],
@@ -545,6 +548,7 @@
         role: ['인덱스 페이지 서브,\n회사소개 페이지 디자인', '인덱스 페이지 섹션,\n회사소개 페이지 섹션 html, css 작성']
       },
       'pj_playing_card': {
+        background: 'crimson',
         info: '54장의 카드를 랜덤으로 뒤집는 간단한 인터랙션입니다.',
         link: ['사이트 보러가기|https://sajajarileo.github.io/playing-cards'],
         tool: 'vs',
@@ -552,6 +556,7 @@
         role: ['디자인, 코딩 100%']
       },
       'pj_letter_card': {
+        background: 'rgb(26, 26, 26)',
         info: '편지지와 편지 봉투를 여는 간단한 CSS 애니메이션입니다.',
         link: ['사이트 보러가기|https://sajajarileo.github.io/open-envelope'],
         tool: 'vs',
@@ -565,6 +570,7 @@
         role: ['디자인 100%']
       },
       'pj_lg_group': {
+        background: '#fff',
         info: 'LG전자의 사업을 고객 경험 중심의 스마트 홈 솔루션으로 정의하고, 이에 맞는 기업광고를 제작했습니다. 고객 주위에 항상 LG 기업의 가전들이 있다는 걸 표현했습니다.',
         tool: 'ps',
         member: '1',
@@ -583,6 +589,7 @@
         role: ['디자인 100%']
       },
       'pj_almondlight': {
+        background: 'rgb(99, 99, 99)',
         category: '패키지',
         info: '가상으로 만든 음료 제품 "아몬드 라이트"의 패키지 디자인입니다. 맛은 오리지널, 바나나, 초콜릿, 말차이며 맛의 이미지를 살린 각각의 디자인이 있습니다.',
         tool: 'ps, ai',
@@ -597,6 +604,7 @@
         role: ['디자인 100%']
       },
       'pj_welcome_to_korea': {
+        background: 'rgb(230, 230, 225)',
         category: '잡지',
         info: '외국인을 대상으로 한 한국의 관광 명소를 소개하는 잡지입니다. 전주 한옥마을, 롯데월드 타워, N 서울 타워로 총 4개의 챕터로 구성되어 있습니다. 각 챕터에는 세부적인 관광지와 위치 등을 담았습니다.',
         tool: 'ps, id',
@@ -613,6 +621,12 @@
       // 이미지 변경
       TAG_PORTFOLIO_IMG.src = '';
       TAG_PORTFOLIO_IMG.src = `${REPO_URL}/img/${eventTarget.id}.jpg`;
+
+      // 이미지 박스 배경
+      let imgBg;
+      if (data.background) imgBg = data.background;
+      else imgBg = 'hsl(0, 0%, 95%)';
+      ID_PORTFOLIO.querySelector('.imgbox').style.background = imgBg;
 
       // 타이틀 작성
       let title = `${eventTarget.querySelector('p').innerText} ${data.category ?? ''} 디자인`;
@@ -666,8 +680,18 @@
         }
         CLS_PORTFOLIO_ROLE.innerHTML = '';
         CLS_PORTFOLIO_ROLE.appendChild(frag);
-      }
+        CLS_PORTFOLIO_ROLE.style.removeProperty('display');
+      } else CLS_PORTFOLIO_ROLE.style.display = 'none';
     }
+
+    // 사전 이미지 로드
+    function preloadImg() {
+      let img = new Image();
+      TAGS_GALLERY_DIV.forEach(e => {
+        img.src = `${REPO_URL}/img/${e.id}.jpg`;
+        console.log(`${REPO_URL}/img/${e.id}.jpg`);
+      });
+    } preloadImg();
     
     // 포트폴리오 열기
     TAGS_GALLERY_DIV.forEach(e =>
