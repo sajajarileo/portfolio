@@ -277,7 +277,6 @@
       min-height: 50%;
       padding: max(1em, 12px);
       background: center / contain no-repeat;
-      transition: background var(--duration);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -560,6 +559,7 @@
         role: ['디자인 100%']
       },
       'pj_binggrae': {
+        imgCount: 3,
         background: 'rgb(228, 229, 231)',
         category: '반응형 웹',
         info: '빙그레의 웹 사이트를 레트로 감성이 물씬 드는 반응형 웹으로 리뉴얼 했습니다.',
@@ -659,9 +659,7 @@
         img.src = `${REPO_URL}/img/${e.id}.jpg`;
       });
     } preloadImg();
-
-    //이미지 트랜지션 제거
-
+    
     // 포트폴리오 이전과 다음 버튼
     let currentPopUp;
     
@@ -676,6 +674,7 @@
 
       let num = data.currentImg == 1 ? '' : `-${data.currentImg}`;
       CLS_PORTFOLIO_IMG.style.backgroundImage = `url(${REPO_URL}/img/${currentPopUp}${num}.jpg)`;
+      CLS_PORTFOLIO_IMG.style.transition = 'background var(--duration)';
       setPortfolioCounter(data.currentImg, data.maxImg);
     }
     
@@ -705,6 +704,7 @@
         data.currentImg = 1;
         data.maxImg = data.imgCount;
         setPortfolioCounter(data.currentImg, data.maxImg);
+        CLS_PORTFOLIO_IMG.style.removeProperty('transition');
         Array.from(CLS_PORTFOLIO_IMG.children).forEach(e => {
           e.style.removeProperty('display');
         });
