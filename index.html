@@ -302,9 +302,10 @@
     #portfolio .txtbox {
       flex-basis: min(30%, 20em);
       position: relative;
-      height: max-content;
+      min-height: 100%;
       padding: var(--gutterX);
       padding-bottom: calc(var(--gutterX) * 2);
+      box-shadow: 0 0 0.25em hsla(0, 0%, 0%, 25%);
       background: inherit;
       display: flex;
       flex-direction: column;
@@ -359,6 +360,9 @@
       }
       #portfolio .box {
         flex-direction: column;
+      }
+      #portfolio .txtbox {
+        min-height: auto;
       }
     }
     
