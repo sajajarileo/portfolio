@@ -431,6 +431,10 @@
           <div class="img"></div>
           <p>빙 샌드</p>
         </div>
+        <div id="pj_daesan">
+          <div class="img"></div>
+          <p>대산종합설비</p>
+        </div>
         <div id="pj_binggrae">
           <div class="img"></div>
           <p>빙그레</p>
@@ -438,10 +442,6 @@
         <div id="pj_jomalone">
           <div class="img"></div>
           <p>조 말론</p>
-        </div>
-        <div id="pj_daesan">
-          <div class="img"></div>
-          <p>대산종합설비</p>
         </div>
         <div id="pj_playing_card">
           <div class="img"></div>
@@ -556,6 +556,16 @@
         member: '1',
         role: ['디자인 100%']
       },
+      'pj_daesan': {
+        imgCount: 2,
+        background: '#bfbfbf',
+        category: '반응형 웹',
+        info: '대산종합설비 웹사이트 제작입니다. 인덱스 페이지 서브 디자인, 회사소개 페이지 디자인, html과 css 작성을 맡았습니다.',
+        link: ['사이트 보러가기|https://www.xn--ds-c82j38g33mzot.com'],
+        tool: 'ps, ai, vs',
+        member: '2',
+        role: ['인덱스 페이지 서브,\n회사소개 페이지 디자인', '인덱스 페이지 섹션,\n회사소개 페이지 섹션 html, css 작성']
+      },
       'pj_binggrae': {
         background: 'rgb(228, 229, 231)',
         category: '반응형 웹',
@@ -566,23 +576,14 @@
         role: ['팀장 역할 수행', '회사소개 대표 페이지,\n제품 소개 대표 페이지,\nESG 대표 페이지,\n뉴스룸 대표 페이지 디자인', '코딩 100%']
       },
       'pj_jomalone': {
-        background: 'rgb(44, 44, 44)',
+        imgCount: 3,
+        background: '#f4eac2',
         category: '웹',
         info: '조 말론의 웹 사이트를 깔끔하고 세련된 느낌에 초점을 맞추어 리뉴얼 했습니다.',
         link: ['사이트 보러가기|http://gmail000leo8202.dothome.co.kr', `기획안|${REPO_URL}/pdf/plan_jomalone.pdf`],
         tool: 'ps, ai, vs',
         member: '3',
         role: ['팀장 역할 수행', '디자인 가이드 작성', '48개 html 구조,\nstyle.css,\najax를 이용한 auto_href.js 작성']
-      },
-      'pj_daesan': {
-        imgCount: 2,
-        background: '#eee',
-        category: '반응형 웹',
-        info: '대산종합설비 웹사이트 제작입니다. 인덱스 페이지 서브 디자인, 회사소개 페이지 디자인, html과 css 작성을 맡았습니다.',
-        link: ['사이트 보러가기|https://www.xn--ds-c82j38g33mzot.com'],
-        tool: 'ps, ai, vs',
-        member: '2',
-        role: ['인덱스 페이지 서브,\n회사소개 페이지 디자인', '인덱스 페이지 섹션,\n회사소개 페이지 섹션 html, css 작성']
       },
       'pj_playing_card': {
         background: 'crimson',
@@ -693,6 +694,7 @@
       if (!data) return;
 
       // 이미지 변경
+      CLS_PORTFOLIO_IMG.style.backgroundImage = '';
       CLS_PORTFOLIO_IMG.style.backgroundImage = `url(${REPO_URL}/img/${eventTarget.id}.jpg)`;
 
       // 이미지 배경 변경
